@@ -1,0 +1,12 @@
+{
+	"name": "cpu",
+	"authors": [
+		"Don Pollitz"
+	],
+	"description": "A Virtual Cpu",
+	"copyright": "Copyright © 2017, Don Pollitz",
+	"license": "proprietary",
+	"dependencies": {
+		"dunit": "~>1.0.14"
+	}
+}

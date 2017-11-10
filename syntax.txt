@@ -1,0 +1,27 @@
+We're going to define our own assembly language for a 16-bit CPU.  This CPU will have 4 registers (all set to zero to begin with, a,b,c,d).  Each register is 16 bits, and can hold any value between -32768 and 32767.  They are allowed to overflow/underflow (adding 1 to 32767 for example will give you -32768)
+
+We'll also define 5 commands:
+inc <reg>	a letter (a,b,c,d) that is the register	Adds 1 to the value in the register
+dec <reg>	a letter (a,b,c,d) that is the register	Subtracts 1 to the value in the register
+mov <dest-reg> <src-reg>	each param is a single letter (a,b,c,d) indicating register	Copies the value from <src-reg> into <dest-reg>
+jmp (offset)	a positive or negative number to unconditionally jump to (the current address is 0x0000 offset) This is the number of bytes to jump	Goes to the instruction at offset.
+jnz <reg> offset	
+
+Register is a single letter (a,b,c,d) corresponding register
+
+Offset is a positive or negative number (current address is 0x0000 offset) This is the number of bytes to jump
+	Goes to the instruction at offset if the register is not zero
+
+Offsets are limited to 8 bits (from -128 to 127)
+
+1
+5------8-------0
+
+opcodes:
+inc 0 |0(15-12) reg(11-8)
+dec 1 |1(15-12) reg(11-8)
+mov 2 |2(15-12) destReg(11-8) srcReg(7-4)
+jmp 3 |3(15-12) offset(7-0)
+jnz 4 |4(15-12) reg(11-8) offset(7-0)
+
+
